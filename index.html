@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Numberinc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 42rem;
+            background-color: black;
+        }
+
+        .counter-container {
+            padding: 34px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            font-size: 1.2rem;
+        }
+        .outcon{
+            background-color: white;
+            width: 651px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 54px 0px;
+            border-radius: 30px;
+        }
+        .counter{
+            color: rgb(255, 174, 0);
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outcon">
+        <div class="counter-container">
+            <i class="fas fa-mug-hot fa-4x"></i>
+            <div class="counter" data-target="4000"></div>
+            <span>Project Completed</span>
+        </div>
+        <div class="counter-container">
+            <i class="fas fa-user fa-4x"></i>
+            <div class="counter" data-target="15000"></div>
+            <span>Our Happy Client</span>
+        </div>
+        <div class="counter-container">
+            <i class="fas fa-tasks fa-4x"></i>
+            <div class="counter" data-target="500"></div>
+            <span>OnGoing Project</span>
+        </div>
+    </div>
+
+
+
+    <script>
+        const counters = document.querySelectorAll('.counter')
+        counters.forEach((counter) => {
+            counter.innerHTML = 0
+
+            const updatecounter = () => {
+                const targetcount = counter.getAttribute('data-target')
+                const startingcount = Number(counter.innerHTML)
+                const incr = targetcount / 100
+                if (startingcount < targetcount) {
+                    counter.innerHTML = `${Math.round(startingcount + incr)}`;
+                    setTimeout(updatecounter, 10);
+                } else {
+                    counter.innerHTML = targetcount;
+                }
+            }
+        
+            updatecounter()
+        })
+    </script>
+</body>
+
+</html>
